@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Error SomeThing Unexpected Happens!</title>
-    <link rel="stylesheet" type="text/css" href="/error/assets/css/style.css" />
-    <link href="/error/assets/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/error-t/assets/css/style.css" />
+    <link href="/error-t/assets/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
     <div class="container">
-        <img width="50%" height="50%"  src="/error/assets/images/unexpected.png" />
+        <img width="50%" height="50%"  src="/error-t/assets/images/unexpected.png" />
         <br />
         <h2>Please Don't Panic It's Just a minor Problem
             <br/>
