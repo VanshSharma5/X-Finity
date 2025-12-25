@@ -1,0 +1,28 @@
+server:
+    port: 8000
+
+spring:
+  application:
+    name: contactmanager
+
+  profiles:
+    active:
+    - debug
+
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+
+  sql:
+    init:
+      mode: always
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/sample
+    username: admin
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# debug: true
+# debug: true
