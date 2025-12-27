@@ -1,5 +1,7 @@
 package com.xfinity.contactmanager.controler;
 
+import java.util.Locale;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +11,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.xfinity.contactmanager.models.Contact;
 import com.xfinity.contactmanager.models.User;
+import com.xfinity.contactmanager.repositories.ContactRepositorie;
 import com.xfinity.contactmanager.repositories.UserRepositorie;
 import com.xfinity.contactmanager.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import net.datafaker.Faker;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +27,17 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 public class UserControler {
 
     private final UserRepositorie userRepositorie;
-    private UserService userService;
+    private final UserService userService;
+    private final Faker faker;
+    private final ContactRepositorie contactRepositorie;
 
-    public UserControler(
-            UserService userService, UserRepositorie userRepositorie) {
-        this.userService = userService;
+
+    public UserControler(UserRepositorie userRepositorie, UserService userService,
+            ContactRepositorie contactRepositorie) {
         this.userRepositorie = userRepositorie;
+        this.userService = userService;
+        this.faker = new Faker(new Locale("in"));
+        this.contactRepositorie = contactRepositorie;
     }
 
     @GetMapping
@@ -108,6 +117,47 @@ public class UserControler {
     // return "redirect:/error?Msg="+Msg;
     // }
     // }
+
+    @GetMapping("create")
+    public String createUser() {
+        return "create-user";
+    }
+
+    @PostMapping("create")
+    public String PostCreteUser(
+            @RequestParam(value = "userName") String userName,
+            @RequestParam(value = "password") String password,
+            @RequestParam(value = "confirmPassword") String confirmPassword,
+            Model model) {
+        if (!password.equals(confirmPassword)) {
+            return "redirect:/create?Msg=Password Did Not Match";
+        }
+        if (userRepositorie.existsByName(userName)) {
+            return "redirect:/create?Msg=UserName Already Exists, Please try with different username";
+        }
+        userRepositorie.save(new User(userName, password));
+        return "redirect:/";
+    }
+
+    @GetMapping("dummy")
+    public String getMethodName(
+            @RequestParam(value = "qty", defaultValue = "500") Integer qty) {
+        if (qty < 0)
+            return "redirect:/error?Msg=Enter Positive value";
+        for (int i = 0; i < qty; i++) {
+            contactRepositorie.save(Contact.builder()
+                    .name(faker.name().fullName())
+                    .contactNo(faker.phoneNumber().phoneNumber())
+                    .houseNo(faker.address().buildingNumber())
+                    .colony(faker.address().streetAddress())
+                    .pinCode(faker.address().postcode())
+                    .subDistrict(faker.address().city())
+                    .state(faker.address().state())
+                    .callDetailCount(faker.number().positive())
+                    .build());
+        }
+        return "redirect:/";
+    }
 
     @GetMapping("search")
     public String updatePage(

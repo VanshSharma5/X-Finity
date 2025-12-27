@@ -13,25 +13,29 @@
 
 </head>
 <body>
-	<form style="background-color:lightblue" class="ftco-section" method="post" action="login">
+	<form style="background-color:lightblue" class="ftco-section" method="post" action="create">
 		<div class="container">
 			<div class="row justify-content-center"> 
 				<div class="col-md-7 col-lg-5">
 					<div class="login-wrap p-4 p-md-5">
-						<h5 style="background-color:pink;color:red">${Msg}</h5>
+						<h5 style="background-color:pink;color:red">${param.Msg}</h5>
                         <div class="icon d-flex align-items-center justify-content-center">
 		      		        <span class="fa fa-user-o"></span>
 		      	        </div>
-		      	        <h3 class="text-center mb-4">Sign In</h3>
+		      	        <h3 class="text-center mb-4">New User</h3>
 		      		<div class="form-group">
-		      			<input type="text" name="name" class="form-control rounded-left" placeholder="Username" required>
+		      			<input type="text" name="userName" class="form-control rounded-left" placeholder="User Name" required>
 		      		</div>
 	            
                     <div class="form-group d-flex">
-                    <input type="password" name="password" class="form-control rounded-left" placeholder="Password" required>
+                    	<input type="password" name="password" class="form-control rounded-left" placeholder="Password" required>
+                    </div>
+
+					<div class="form-group d-flex">
+                    	<input type="password" name="confirmPassword" class="form-control rounded-left" placeholder="Confirm Password" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Create User</button>
                     </div>
 	                </div>	         
 				</div>

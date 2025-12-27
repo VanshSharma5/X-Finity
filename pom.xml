@@ -77,6 +77,12 @@
 			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 			<version>3.0.0</version> <!-- Use the appropriate version -->
 		</dependency>
+		<!-- To generate fake data -->
+		<dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+			<version>2.5.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

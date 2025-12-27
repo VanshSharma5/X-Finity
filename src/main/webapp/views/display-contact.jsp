@@ -226,7 +226,7 @@
 
 								<% } else { %><center>
     <div class="container">
-        <img width="50%" height="50%"  src="/error/assets/images/unexpected.png" />
+        <img width="50%" height="50%"  src="/error-t/assets/images/unexpected.png" />
         <br />
         <h2>Please Don't Panic It's Just a minor Problem
             <br/>

@@ -9,4 +9,5 @@ import com.xfinity.contactmanager.models.User;
 public interface UserRepositorie extends JpaRepository<User, Integer> {
 
     public User getByNameAndPassword(String name, String password);
+    public Boolean existsByName(String name);
 }
