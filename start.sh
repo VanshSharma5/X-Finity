@@ -4,7 +4,7 @@ export DB_URL=jdbc:mysql://localhost:3306/sample
 export DB_USER=admin
 export DB_PASSWORD=admin
 export APP_PORT=8000
-export PROFILE=update
+export PROFILE=prod
 
 FILE="./target/contactmanager-0.0.1-SNAPSHOT.jar"
 
